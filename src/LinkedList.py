@@ -30,6 +30,18 @@ class LinkedList:
 		cursor.next = li.head
 		self.size += len(li)
 
+	def insert(self, index, node):
+		if index == 0:
+			node.next = self.head
+			self.head = node
+		cursor = self.head
+		for i in range(index - 1):
+			cursor = cursor.next
+		cursor_next = cursor.next
+		cursor.next = node
+		node.next = cursor_next
+		self.size += 1
+
 	def __len__(self):
 		return self.size
 
@@ -67,3 +79,5 @@ li.extend(li2)
 print(li)
 print(len(li))
 print(n1)
+li.insert(2, Node(3))
+print(li)
